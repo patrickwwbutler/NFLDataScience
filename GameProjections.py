@@ -56,12 +56,11 @@ model = linear_model.LinearRegression()
 x_columns = ['ReceivingYards', 'ReceivingTDs', 'Receptions', 'RushingYards', 'RushingTDs']
 x = train.loc[:, x_columns]
 
-print(x.shape)
 y = train.nextGameScore
-print(y.shape)
 
 model.fit(x, y)
 
+print("Coefficients of Rec Yds, Rec TDs, Rec, Rush Yds, Rush TDs")
 print(model.coef_)
 
 x_test = test.loc[:, x_columns]
@@ -72,6 +71,7 @@ y_actual = test.nextGameScore
 
 difference = y_actual - y_prediction
 #print(type(difference))
-
+print("Average difference between prediction and actual")
 print(difference.mean())
+print("Standard Deviation of difference")
 print(difference.std())
